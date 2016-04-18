@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %}
+{% block content %}
+
+<div class="x_content">
+                  <br />
+                   <div class="x_content">
+                  <br />
+                  <form id="demo-form2" action="/aposta/new/"  method="POST"  data-parsley-validate class="form-horizontal form-label-left">
+                    {% csrf_token %}
+
+
+
+                        {{ form.user_id }}
+                        {{ form.partida_id }}
+
+
+                      <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Time 1</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select  name="time1" id="time1" class="form-control" required>
+                        {% for entry in times %}
+                        <option value="{{ entry.id }}">{{ entry.descricao }}</option>
+                        {% endfor %}
+                        </select>
+                        </div>
+                      </div>
+
+                         <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Placar Time1</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        {{ form.aposta_placar_time1 }}
+                      </div>
+                    </div>
+                       <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Time 2</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select name="time2"  id="time2"   class="form-control" required >
+                        {% for entry in times %}
+                        <option value="{{ entry.id }}">{{ entry.descricao }}</option>
+                        {% endfor %}
+                        </select>
+                        </div>
+                      </div>
+
+
+                         <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Placar Time 2</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        {{ form.aposta_placar_time2 }}
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        {{ form.user_email }}
+                      </div>
+                    </div>
+
+                      <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Partida</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        {{ form.descricao }} <input id="middle-name" class="form-control col-md-7 col-xs-12"  readonly="readonly"  value="{{partida.descricao}}" type="text" name="middle-name">
+                      </div>
+                    </div>
+                      <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Data da Partida</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        {{form.partida_data}}
+                      </div>
+                    </div>
+
+                       <div class="form-group">
+                      <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Valor da Aposta</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                         {{form.aposta_valor}}
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Data da Aposta <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="birthday"  class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                      </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button type="submit" class="btn btn-primary">Cancel</button>
+                        <button type="submit" class="btn btn-success">Apostar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+</div>
+
+
+{% endblock %}
